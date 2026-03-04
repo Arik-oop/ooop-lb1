@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="Model/Model.csproj" />
   <Project Path="ooop-lb1/ooop-lb1.csproj" />
 </Solution>
