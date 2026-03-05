@@ -108,15 +108,11 @@ namespace Model
             }
         }
 
-        //TODO: to autoproperty
+        //TODO: to autoproperty +
         /// <summary>
         /// Свойство Gender позволяет получить или установить пол человека.
         /// </summary>
-        public Gender Gender
-        {
-            get { return _gender; }
-            set { _gender = value; }
-        }
+        public Gender Gender { get; set; }
 
         /// <summary>
         /// Проверка строки, содержащей только кириллические символы

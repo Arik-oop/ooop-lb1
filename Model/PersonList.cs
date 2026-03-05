@@ -45,7 +45,7 @@ namespace Model
         /// </summary>
         public void RemoveAt(int index)
         {
-            validateIndex(index);
+            ValidateIndex(index);
             _persons.RemoveAt(index);
         }
 
@@ -54,7 +54,7 @@ namespace Model
         /// </summary>
         public Person Get(int index)
         {
-            validateIndex(index);
+            ValidateIndex(index);
             return _persons[index];
         }
 
@@ -83,14 +83,14 @@ namespace Model
             get { return _persons.Count; }
         }
 
-        //TODO: RSDN
+        //TODO: RSDN +
         /// <summary>
         /// Метод проверяющий корректность индекса
         /// </summary>
         /// <param name="index">индекс</param>
         /// <exception cref="ArgumentOutOfRangeException">возникает когда 
         /// индекс вне диапазона</exception>
-        public void validateIndex(int index)
+        public void ValidateIndex(int index)
         {
             if (index < 0 || index >= _persons.Count)
             {
