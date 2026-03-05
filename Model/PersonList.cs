@@ -83,7 +83,6 @@ namespace Model
             get { return _persons.Count; }
         }
 
-        //TODO: RSDN +
         /// <summary>
         /// Метод проверяющий корректность индекса
         /// </summary>

@@ -122,7 +122,7 @@ namespace lb1
         {
             var person = new Person();
 
-            //TODO: WTF? +
+            //TODO: WTF?
             var actionDictionary = new Dictionary<string, Action>()
             {
                 {
@@ -137,7 +137,7 @@ namespace lb1
                     new Action(() =>
                     {
                         person.Surname = Console.ReadLine();
-                        })
+                    })
                 },
                 {
                     "возраст",

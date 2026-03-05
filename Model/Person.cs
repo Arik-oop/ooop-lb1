@@ -108,7 +108,6 @@ namespace Model
             }
         }
 
-        //TODO: to autoproperty +
         /// <summary>
         /// Свойство Gender позволяет получить или установить пол человека.
         /// </summary>
