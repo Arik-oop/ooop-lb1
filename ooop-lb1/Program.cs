@@ -15,7 +15,6 @@ namespace lb1
         /// <param name="args">аргумент</param>
         public static void Main(string[] args)
         {
-
             PersonList list1 = new PersonList();
             PersonList list2 = new PersonList();
 
@@ -123,6 +122,7 @@ namespace lb1
         {
             var person = new Person();
 
+            //TODO: WTF?
             var actionDictionary = new Dictionary<string, Action>()
             {
                 {
