@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
+﻿using System.Text.RegularExpressions;
 
 namespace Model
 {
     /// <summary>
     /// Хранение и обработка данных о человеке
     /// </summary>
-    public class Person
+    public abstract class PersonBase
     {
         /// <summary>
         /// Имя
@@ -42,7 +34,7 @@ namespace Model
         /// <param name="Surname">Фамилия человека</param>
         /// <param name="Age">Количество лет</param>
         /// <param name="Gender">Пол человека</param>
-        public Person(string name, string surname, int age, Gender gender)
+        public PersonBase(string name, string surname, int age, Gender gender)
         {
             Name = name;
             Surname = surname;
@@ -94,17 +86,17 @@ namespace Model
             get { return _age; }
             set
             {
-                if (string.IsNullOrEmpty(Convert.ToString(value)))
+                if (value >= MinAge && value <= MaxAge)
                 {
-                    throw new Exception("Введите возраст!");
+                    _age = value;
                 }
-
-                if (value < MinAge || value > MaxAge)
+                else
                 {
-                    throw new Exception($"{nameof(Age)} должен быть в дипазоне" +
-                        $" от {MinAge} до {MaxAge}");
+                    throw new IndexOutOfRangeException(
+                        $"Поле не может быть пустым. " +
+                        $"Возраст должен находиться " +
+                        $"в пределах от {MinAge} года до {MaxAge} лет");
                 }
-                _age = value;
             }
         }
 
@@ -175,11 +167,16 @@ namespace Model
                 }
             }
         }
+        /// <summary>
+        /// Абстрактный метод получения информации
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetInfo();
 
         /// <summary>
-        /// Создание нового экземпляра класса Person по умолчанию.
+        /// Абстрактный метод проверки возраста
         /// </summary>
-        public Person() { }
+        /// <param name="age">Возраст человека</param>
+        protected abstract void CheckAge(int age);
     }
 }
- 
