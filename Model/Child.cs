@@ -79,14 +79,15 @@ namespace Model
         /// Проверка возраста ребенка
         /// </summary>
         /// <param name="age">Возраст</param>
-        /// <exception cref="Exception">Возраст должен соостветствовать 
+        /// <exception cref="ArgumentOutOfRangeException">Возраст должен соостветствовать 
         /// возрасту ребенка</exception>
         protected override void CheckAge(int age)
         {
             if ((age < MinAgeChild) || (age > MaxAgeChild))
             {
-                //TODO: refactor
-                throw new Exception($"Возраст ребенка должен быть" +
+                //TODO: refactor +
+                throw new ArgumentOutOfRangeException
+                    ($"Возраст ребенка должен быть" +
                     $" в пределах от {MinAgeChild} до {MaxAgeChild}");
             }
         }

@@ -148,14 +148,15 @@ namespace Model
         /// Проверка человека на взрослость
         /// </summary>
         /// <param name="age">Возраст человека</param>
-        /// <exception cref="Exception">Возраст должен быть 
+        /// <exception cref="ArgumentOutOfRangeException">Возраст должен быть 
         /// в определнном диапозоне</exception>
         protected override void CheckAge(int age)
         {
             if ((age < MinAgeAdult) || (age > MaxAgeAdult))
             {
-                //TODO: refactor
-                throw new Exception($"Возраст взрослого человека " +
+                //TODO: refactor +
+                throw new ArgumentOutOfRangeException
+                    ($"Возраст взрослого человека " +
                     $"от {MinAgeAdult} до {MaxAgeAdult}");
             }
         }
@@ -180,20 +181,24 @@ namespace Model
         /// <param name="max">Максимальное допустимое значение</param>
         /// <param name="fieldName">Название поля</param>
         /// <returns>Корректное значение</returns>
-        /// <exception cref="Exception"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         private static int ValidatePassportField(int value, int min, int max, string fieldName)
         {
-            //TODO: {}
+            //TODO: {} +
             if (string.IsNullOrEmpty(Convert.ToString(value)))
-                //TODO: refactor
-                throw new Exception($"Введите {fieldName}!");
-
-            //TODO: {}
+            { 
+                //TODO: refactor +
+                throw new ArgumentException($"Введите {fieldName}!");
+            }
+            //TODO: {} +
             if (value < min || value > max)
-                //TODO: RSDN
-                //TODO: refactor
-                throw new Exception($"{fieldName} должен быть в диапазоне от {min} до {max}");
-
+            { 
+                //TODO: RSDN +
+                //TODO: refactor +
+                throw new ArgumentOutOfRangeException($"{fieldName} " +
+                    $"должен быть в диапазоне от {min} до {max}");
+            }
             return value;
         }
     }

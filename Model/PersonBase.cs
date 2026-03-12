@@ -22,11 +22,7 @@ namespace Model
         /// </summary>
         private int _age;
 
-        //TODO: remove
-        /// <summary>
-        /// Пол
-        /// </summary>
-        private Gender _gender;
+        //TODO: remove +
 
         /// <summary>
         /// Создаёт человека

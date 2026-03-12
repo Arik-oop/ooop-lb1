@@ -45,24 +45,19 @@ namespace lb1
             Console.WriteLine("\nОпределение типа 4-го человека:\n");
 
             var person = list.Get(3);
-
+            //TOOD: отступы +
             switch (person)
             {
-                //TOOD: отступы
                 case Adult personAdult:
-                    {
-                        Console.WriteLine(personAdult.GetHobby());
-                        break;
-                    }
+                    Console.WriteLine(personAdult.GetHobby());
+                    break;
+
                 case Child personChild:
-                    {
-                        Console.WriteLine(personChild.GetGame());
-                        break;
-                    }
+                    Console.WriteLine(personChild.GetGame());
+                    break;
+
                 default:
-                    {
-                        break;
-                    }
+                    break;
             }
 
             WaitKey();
