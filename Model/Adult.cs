@@ -154,6 +154,7 @@ namespace Model
         {
             if ((age < MinAgeAdult) || (age > MaxAgeAdult))
             {
+                //TODO: refactor
                 throw new Exception($"Возраст взрослого человека " +
                     $"от {MinAgeAdult} до {MaxAgeAdult}");
             }
@@ -182,10 +183,15 @@ namespace Model
         /// <exception cref="Exception"></exception>
         private static int ValidatePassportField(int value, int min, int max, string fieldName)
         {
+            //TODO: {}
             if (string.IsNullOrEmpty(Convert.ToString(value)))
+                //TODO: refactor
                 throw new Exception($"Введите {fieldName}!");
 
+            //TODO: {}
             if (value < min || value > max)
+                //TODO: RSDN
+                //TODO: refactor
                 throw new Exception($"{fieldName} должен быть в диапазоне от {min} до {max}");
 
             return value;

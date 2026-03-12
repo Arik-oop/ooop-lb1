@@ -48,6 +48,7 @@ namespace lb1
 
             switch (person)
             {
+                //TOOD: отступы
                 case Adult personAdult:
                     {
                         Console.WriteLine(personAdult.GetHobby());

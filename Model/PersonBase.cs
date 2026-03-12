@@ -22,6 +22,7 @@ namespace Model
         /// </summary>
         private int _age;
 
+        //TODO: remove
         /// <summary>
         /// Пол
         /// </summary>
