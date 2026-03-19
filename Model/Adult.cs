@@ -154,7 +154,6 @@ namespace Model
         {
             if ((age < MinAgeAdult) || (age > MaxAgeAdult))
             {
-                //TODO: refactor +
                 throw new ArgumentOutOfRangeException
                     ($"Возраст взрослого человека " +
                     $"от {MinAgeAdult} до {MaxAgeAdult}");
@@ -185,17 +184,12 @@ namespace Model
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         private static int ValidatePassportField(int value, int min, int max, string fieldName)
         {
-            //TODO: {} +
             if (string.IsNullOrEmpty(Convert.ToString(value)))
             { 
-                //TODO: refactor +
                 throw new ArgumentException($"Введите {fieldName}!");
             }
-            //TODO: {} +
             if (value < min || value > max)
             { 
-                //TODO: RSDN +
-                //TODO: refactor +
                 throw new ArgumentOutOfRangeException($"{fieldName} " +
                     $"должен быть в диапазоне от {min} до {max}");
             }

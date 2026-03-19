@@ -85,7 +85,6 @@ namespace Model
         {
             if ((age < MinAgeChild) || (age > MaxAgeChild))
             {
-                //TODO: refactor +
                 throw new ArgumentOutOfRangeException
                     ($"Возраст ребенка должен быть" +
                     $" в пределах от {MinAgeChild} до {MaxAgeChild}");

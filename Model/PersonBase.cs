@@ -22,8 +22,6 @@ namespace Model
         /// </summary>
         private int _age;
 
-        //TODO: remove +
-
         /// <summary>
         /// Создаёт человека
         /// </summary>
@@ -164,6 +162,7 @@ namespace Model
                 }
             }
         }
+
         /// <summary>
         /// Абстрактный метод получения информации
         /// </summary>

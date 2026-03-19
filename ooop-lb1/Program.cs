@@ -45,7 +45,7 @@ namespace lb1
             Console.WriteLine("\nОпределение типа 4-го человека:\n");
 
             var person = list.Get(3);
-            //TOOD: отступы +
+            //TODO: {} 
             switch (person)
             {
                 case Adult personAdult:
