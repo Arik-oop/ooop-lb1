@@ -17,6 +17,7 @@ namespace Model
         /// </summary>
         private int _passportSeria;
 
+        
         /// <summary>
         /// Номер паспорта
         /// </summary>
