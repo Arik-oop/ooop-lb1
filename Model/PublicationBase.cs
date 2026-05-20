@@ -1,51 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Model
 {
     /// <summary>
-    /// Базовый класс издания
+    /// Базовый класс издания.
     /// </summary>
-    public abstract class PublicationBase : PublicationInter
+    public abstract class PublicationBase : IPublication
     {
         /// <summary>
-        /// Заглавие 
+        /// Заглавие.
         /// </summary>
         private string _title;
 
         /// <summary>
-        /// Сведения о заглавии
+        /// Сведения о заглавии.
         /// </summary>
         private string _titleInformation;
 
         /// <summary>
-        /// Год 
+        /// Год издания.
         /// </summary>
         private int _year;
 
         /// <summary>
-        /// Место 
+        /// Место издания.
         /// </summary>
         private string _place;
 
         /// <summary>
-        /// Издательство
+        /// Издательство.
         /// </summary>
         private string _publisher;
 
         /// <summary>
-        /// Количество страниц
+        /// Количество страниц.
         /// </summary>
         private int _totalPages;
 
         /// <summary>
-        /// Минимальный год 
+        /// Минимальный допустимый год издания.
         /// </summary>
         private const int MinYear = 868;
 
         /// <summary>
-        /// Свойство заглавия
+        /// Свойство заглавия.
         /// </summary>
         public string Title
         {
@@ -58,25 +57,25 @@ namespace Model
         }
 
         /// <summary>
-        /// Свойство сведений о заглавии
+        /// Свойство сведений о заглавии.
         /// </summary>
         public string TitleInformation { get; set; }
 
         /// <summary>
-        /// Свойство года издания
+        /// Свойство года издания.
         /// </summary>
         public int Year
         {
             get => _year;
             set
             {
-                ValidateYear(value);
+                ValidateYear(value, nameof(Year));
                 _year = value;
             }
         }
 
         /// <summary>
-        /// Свойство места издания
+        /// Свойство места издания.
         /// </summary>
         public string Place
         {
@@ -89,7 +88,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Свойство издательства
+        /// Свойство издательства.
         /// </summary>
         public string Publisher
         {
@@ -102,80 +101,82 @@ namespace Model
         }
 
         /// <summary>
-        /// Свойство количества страниц
+        /// Свойство количества страниц.
         /// </summary>
         public int TotalPages
         {
             get => _totalPages;
             set
             {
-                ValidateTotalPages(value);
+                ValidatePositiveNumber(value, nameof(TotalPages));
                 _totalPages = value;
             }
         }
 
         /// <summary>
-        /// Абстрактный метод описывающий издание по ГОСТ
+        /// Абстрактный метод для описания издания по ГОСТ.
         /// </summary>
-        /// <returns>Строку с описанием издания по ГОСТ</returns>
+        /// <returns>Строковое описание издания по ГОСТ.</returns>
         public abstract string GetGOST();
 
         /// <summary>
-        /// Метод валидации строки
+        /// Метод валидации строкового значения.
         /// </summary>
-        /// <param name="value">Строка для валидации</param>
-        /// <param name="propertyName">nameof для строки</param>
-        /// <exception cref="ArgumentException">
-        /// Ошибка при пустой строке</exception>
-        protected void ValidateString(string value, string propertyName)
+        /// <param name="value">Проверяемое значение.</param>
+        /// <param name="parameterName">Имя параметра для сообщения об ошибке.</param>
+        protected void ValidateString
+            (string value, string parameterName)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                throw new ArgumentException($"{propertyName} " +
-                    $"не может быть пустым");
+                throw new ArgumentException(
+                    $"Значение параметра '{parameterName}'" +
+                    $" не может быть пустым.");
             }
         }
 
         /// <summary>
-        /// Метод валидации года издания
+        /// Метод валидации года издания.
         /// </summary>
-        /// <param name="year">Год издания</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Ошибка при выходе даты издания за диапазон</exception>
-        protected void ValidateYear(int year)
+        /// <param name="value">Проверяемое значение.</param>
+        /// <param name="parameterName">Имя параметра для сообщения об ошибке.</param>
+        protected void ValidateYear
+            (int value, string parameterName)
         {
-            if (year < MinYear || year > DateTime.Now.Year)
+            if (value < MinYear || value > DateTime.Now.Year)
             {
-                throw new ArgumentOutOfRangeException($"{nameof(Year)}" +
-                    $" должен быть в диапазоне от {MinYear}" +
-                    $" до {DateTime.Now.Year}");
+                throw new ArgumentException(
+                    $"Значение параметра '{parameterName}'" +
+                    $" должно быть в диапазоне от {MinYear}" +
+                    $" до {DateTime.Now.Year}.");
             }
         }
 
         /// <summary>
-        /// Метод валидации количества страниц
+        /// Метод валидации положительного числа.
         /// </summary>
-        /// <param name="totalPages">Кол-во страниц</param>
-        /// <exception cref="ArgumentOutOfRangeException">
-        /// Ошибка при отрицательном кол-ве страниц</exception>
-        protected void ValidateTotalPages(int totalPages)
+        /// <param name="value">Проверяемое значение.</param>
+        /// <param name="parameterName">Имя параметра для сообщения об ошибке.</param>
+        protected void ValidatePositiveNumber
+            (int value, string parameterName)
         {
-            if (totalPages <= 0)
+            if (value <= 0)
             {
-                throw new ArgumentOutOfRangeException(
-                    $"{nameof(TotalPages)} должно быть больше нуля");
+                throw new ArgumentException(
+                    $"Значение параметра '{parameterName}'" +
+                    $" должно быть положительным числом.");
             }
         }
 
         /// <summary>
-        /// Метод проверки на наличие заполненного атрибута
+        /// Метод добавления значения в StringBuilder при условии его заполнения.
         /// </summary>
-        /// <param name="stringBuilder"></param>
-        /// <param name="prefix"></param>
-        /// <param name="value"></param>
-        /// <param name="suffix"></param>
-        protected static void AppendIfNotEmpty(StringBuilder stringBuilder,
-            string prefix, string value, string suffix = "")
+        /// <param name="stringBuilder">Целевой объект StringBuilder.</param>
+        /// <param name="prefix">Префикс для добавляемого значения.</param>
+        /// <param name="value">Проверяемое и добавляемое значение.</param>
+        /// <param name="suffix">Суффикс для добавляемого значения.</param>
+        protected static void AppendIfNotEmpty
+            (StringBuilder stringBuilder, string prefix, string value, string suffix = "")
         {
             if (!string.IsNullOrWhiteSpace(value))
             {

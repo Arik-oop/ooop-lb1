@@ -5,44 +5,44 @@ using System.Text;
 namespace Model
 {
     /// <summary>
-    /// Интерфейс издания
+    /// Интерфейс издания.
     /// </summary>
-    public interface PublicationInter
+    public interface IPublication
     {
         /// <summary>
-        /// Заглавие
+        /// Заглавие издания.
         /// </summary>
         string Title { get; set; }
 
         /// <summary>
-        /// Сведение о заглавии
+        /// Сведения о заглавии.
         /// </summary>
         string TitleInformation { get; set; }
 
         /// <summary>
-        /// Год
+        /// Год издания.
         /// </summary>
         int Year { get; set; }
 
         /// <summary>
-        /// Место
+        /// Место издания.
         /// </summary>
         string Place { get; set; }
 
         /// <summary>
-        /// Издательство
+        /// Издательство.
         /// </summary>
         string Publisher { get; set; }
 
         /// <summary>
-        /// Количество страниц
+        /// Количество страниц.
         /// </summary>
         int TotalPages { get; set; }
 
         /// <summary>
-        /// Метод формирования описания по ГОСТу
+        /// Метод для получения информации об издании по ГОСТ.
         /// </summary>
-        /// <returns>Строку с информацие об издании</returns>
+        /// <returns>Строковое описание издания по ГОСТ.</returns>
         string GetGOST();
     }
 }
