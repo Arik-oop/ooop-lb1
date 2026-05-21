@@ -51,6 +51,7 @@ namespace ConsoleLibrary
 
                 string choice = Console.ReadLine();
 
+                //TODO: отступы
                 switch (choice)
                 {
                     case "b":
@@ -124,19 +125,20 @@ namespace ConsoleLibrary
             var actions = GetBaseActions<Book>();
 
             actions["авторы (перечислите по одному через Enter, " +
-                "оставте пустую строку если закончили)"] = (book) =>
-            {
-                while (true)
+                "оставте пустую строку если закончили)"] = 
+                (book) =>
                 {
-                    Console.Write($"Автор {book.Authors.Count + NumberOffset}: ");
-                    string author = Console.ReadLine();
-                    if (string.IsNullOrWhiteSpace(author))
+                    while (true)
                     {
-                        break;
+                        Console.Write($"Автор {book.Authors.Count + NumberOffset}: ");
+                        string author = Console.ReadLine();
+                        if (string.IsNullOrWhiteSpace(author))
+                        {
+                            break;
+                        }
+                        book.AddAuthors(author.Trim());
                     }
-                    book.AddAuthors(author.Trim());
-                }
-            };
+                };
 
             return CreatePublication(actions);
         }
@@ -178,9 +180,9 @@ namespace ConsoleLibrary
         private static Dissertation InputDissertation()
         {
             var actions = GetBaseActions<Dissertation>();
-
-            actions["полное имя автора, без сокращений"] = (dissertation)
-                => dissertation.AuthorFull = Console.ReadLine();
+            //TODO: RSDN
+            actions["полное имя автора, без сокращений"] = 
+                (dissertation) => dissertation.AuthorFull = Console.ReadLine();
             actions["специальность"] = (dissertation)
                 => dissertation.Speciality = Console.ReadLine();
             actions["ученую степень диссертации"] = (dissertation)
