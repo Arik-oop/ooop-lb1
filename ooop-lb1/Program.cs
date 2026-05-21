@@ -37,7 +37,7 @@ namespace ConsoleLibrary
         /// </summary>
         private static void MainMenu()
         {
-            Console.WriteLine("Библиотека");
+            Console.WriteLine("Электронная библиотека");
 
             while (true)
             {
@@ -46,7 +46,7 @@ namespace ConsoleLibrary
                 Console.WriteLine("j - Добавить журнал");
                 Console.WriteLine("s - Добавить сборник");
                 Console.WriteLine("d - Добавить диссертацию");
-                Console.WriteLine("a - Показать все издания");
+                Console.WriteLine("a - База изданий");
                 Console.Write("Действие: ");
 
                 string choice = Console.ReadLine();
@@ -56,7 +56,7 @@ namespace ConsoleLibrary
                     case "b":
                         {
                             _publications.Add(InputBook());
-                            Console.WriteLine("Книга добавлена!\n");
+                            Console.WriteLine("Книга добавлена\n");
                             break;
                         }
                     case "j":
@@ -67,13 +67,13 @@ namespace ConsoleLibrary
                     case "s":
                         {
                             _publications.Add(InputCollection());
-                            Console.WriteLine("Сборник добавлен!\n");
+                            Console.WriteLine("Сборник добавлен\n");
                             break;
                         }
                     case "d":
                         {
                             _publications.Add(InputDissertation());
-                            Console.WriteLine("Диссертация добавлена!\n");
+                            Console.WriteLine("Диссертация добавлена\n");
                             break;
                         }
                     case "a":
@@ -102,11 +102,11 @@ namespace ConsoleLibrary
             {
                 ["название"] = (publication)
                     => publication.Title = Console.ReadLine(),
-                ["сведения о заглавии (Enter, чтобы пропустить)"] = (publication)
+                ["сведения о заглавии (Можно пропустить, нажав Enter)"] = (publication)
                     => publication.TitleInformation = Console.ReadLine(),
                 ["место издания"] = (publication)
                     => publication.Place = Console.ReadLine(),
-                ["издательство/учредитель"] = (publication)
+                ["издательство"] = (publication)
                     => publication.Publisher = Console.ReadLine(),
                 ["год издания"] = (publication)
                     => publication.Year = ReadInteger("Год издания"),
@@ -228,11 +228,11 @@ namespace ConsoleLibrary
         {
             if (_publications.Count == 0)
             {
-                Console.WriteLine("\nСписок изданий пуст.");
+                Console.WriteLine("\nВ базе нет изданий");
                 return;
             }
 
-            Console.WriteLine("Список всех изданий");
+            Console.WriteLine("Список изданий в базе");
 
             for (int i = 0; i < _publications.Count; i++)
             {
