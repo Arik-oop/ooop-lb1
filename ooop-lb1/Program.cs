@@ -51,42 +51,42 @@ namespace ConsoleLibrary
 
                 string choice = Console.ReadLine();
 
-                //TODO: отступы
+                //TODO: отступы +
                 switch (choice)
                 {
                     case "b":
-                        {
-                            _publications.Add(InputBook());
-                            Console.WriteLine("Книга добавлена\n");
-                            break;
-                        }
+                    {
+                        _publications.Add(InputBook());
+                        Console.WriteLine("Книга добавлена\n");
+                        break;
+                    }
                     case "j":
-                        {
-                            _publications.Add(InputJournal());
-                            break;
-                        }
+                    {
+                        _publications.Add(InputJournal());
+                        break;
+                    }
                     case "s":
-                        {
-                            _publications.Add(InputCollection());
-                            Console.WriteLine("Сборник добавлен\n");
-                            break;
-                        }
+                    {
+                        _publications.Add(InputCollection());
+                        Console.WriteLine("Сборник добавлен\n");
+                        break;
+                    }
                     case "d":
-                        {
-                            _publications.Add(InputDissertation());
-                            Console.WriteLine("Диссертация добавлена\n");
-                            break;
-                        }
+                    {
+                        _publications.Add(InputDissertation());
+                        Console.WriteLine("Диссертация добавлена\n");
+                        break;
+                    }
                     case "a":
-                        {
-                            ShowAllPublications();
-                            break;
-                        }
+                    {
+                        ShowAllPublications();
+                        break;
+                    }
                     default:
-                        {
-                            Console.WriteLine("Такого действия нету");
-                            break;
-                        }
+                    {
+                        Console.WriteLine("Такого действия нету");
+                        break;
+                    }
                 }
             }
         }
@@ -101,18 +101,18 @@ namespace ConsoleLibrary
         {
             return new Dictionary<string, Action<T>>
             {
-                ["название"] = (publication)
-                    => publication.Title = Console.ReadLine(),
-                ["сведения о заглавии (Можно пропустить, нажав Enter)"] = (publication)
-                    => publication.TitleInformation = Console.ReadLine(),
-                ["место издания"] = (publication)
-                    => publication.Place = Console.ReadLine(),
-                ["издательство"] = (publication)
-                    => publication.Publisher = Console.ReadLine(),
-                ["год издания"] = (publication)
-                    => publication.Year = ReadInteger("Год издания"),
-                ["количество страниц"] = (publication)
-                    => publication.TotalPages = ReadInteger("Количество страниц")
+                ["название"] = 
+                    (publication) => publication.Title = Console.ReadLine(),
+                ["сведения о заглавии"] = 
+                    (publication) => publication.TitleInformation = Console.ReadLine(),
+                ["место издания"] = 
+                    (publication) => publication.Place = Console.ReadLine(),
+                ["издательство"] = 
+                    (publication) => publication.Publisher = Console.ReadLine(),
+                ["год издания"] = 
+                    (publication) => publication.Year = ReadInteger("Год издания"),
+                ["количество страниц"] = 
+                    (publication) => publication.TotalPages = ReadInteger("Количество страниц")
             };
         }
 
@@ -151,8 +151,8 @@ namespace ConsoleLibrary
         {
             var actions = GetBaseActions<Journal>();
 
-            actions["частоту издания"] = (journal)
-                => journal.Frequency = Console.ReadLine();
+            actions["частоту издания"] = 
+                (journal) => journal.Frequency = Console.ReadLine();
 
             return CreatePublication(actions);
         }
@@ -165,10 +165,10 @@ namespace ConsoleLibrary
         {
             var actions = GetBaseActions<Collection>();
 
-            actions["список редакционной коллегии"] = (collection)
-                => collection.EditorialBoard = Console.ReadLine();
-            actions["список ответственных редакторов"] = (collection)
-                => collection.ResponsibleEditors = Console.ReadLine();
+            actions["список редакционной коллегии"] = 
+                (collection) => collection.EditorialBoard = Console.ReadLine();
+            actions["список ответственных редакторов"] = 
+                (collection) => collection.ResponsibleEditors = Console.ReadLine();
 
             return CreatePublication(actions);
         }
@@ -180,13 +180,13 @@ namespace ConsoleLibrary
         private static Dissertation InputDissertation()
         {
             var actions = GetBaseActions<Dissertation>();
-            //TODO: RSDN
+            //TODO: RSDN +
             actions["полное имя автора, без сокращений"] = 
                 (dissertation) => dissertation.AuthorFull = Console.ReadLine();
-            actions["специальность"] = (dissertation)
-                => dissertation.Speciality = Console.ReadLine();
-            actions["ученую степень диссертации"] = (dissertation)
-                => dissertation.Degree = Console.ReadLine();
+            actions["специальность"] = 
+                (dissertation) => dissertation.Speciality = Console.ReadLine();
+            actions["ученую степень диссертации"] = 
+                (dissertation) => dissertation.Degree = Console.ReadLine();
 
             return CreatePublication(actions);
         }

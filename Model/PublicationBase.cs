@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Model
@@ -56,12 +57,19 @@ namespace Model
             }
         }
 
-        //TODO: validation
+        //TODO: validation +
         /// <summary>
         /// Свойство сведений о заглавии.
         /// </summary>
-        public string TitleInformation { get; set; }
-
+        public string TitleInformation
+        {
+            get => _titleInformation;
+            set
+            {
+                ValidateString(value, nameof(TitleInformation));
+                _titleInformation = value;
+            }
+        }
         /// <summary>
         /// Свойство года издания.
         /// </summary>

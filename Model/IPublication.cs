@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Model
 {
-    //TODO: Зачем?
+    //TODO: Зачем? +
     /// <summary>
     /// Интерфейс издания.
     /// </summary>
