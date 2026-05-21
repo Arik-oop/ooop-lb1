@@ -45,6 +45,16 @@ namespace Model
         private const int MinYear = 868;
 
         /// <summary>
+        /// Минимальный допустимый год издания.
+        /// </summary>
+        private const int MinTotalPages = 7;
+
+        /// <summary>
+        /// Минимальный допустимый год издания.
+        /// </summary>
+        private const int MaxTotalPages = 100100;
+
+        /// <summary>
         /// Свойство заглавия.
         /// </summary>
         public string Title
@@ -168,11 +178,12 @@ namespace Model
         protected void ValidatePositiveNumber
             (int value, string parameterName)
         {
-            if (value <= 0)
+            if (value <= 0 || value < MinTotalPages || value > MaxTotalPages)
             {
                 throw new ArgumentException(
                     $"Значение параметра '{parameterName}'" +
-                    $" должно быть положительным числом.");
+                    $" должно быть положительным числом и быть " +
+                    $"в диапазоне от {MinTotalPages} до {MaxTotalPages}.");
             }
         }
 

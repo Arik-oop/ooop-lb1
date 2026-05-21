@@ -47,6 +47,7 @@ namespace ConsoleLibrary
                 Console.WriteLine("s - Добавить сборник");
                 Console.WriteLine("d - Добавить диссертацию");
                 Console.WriteLine("a - База изданий");
+                Console.WriteLine("e - Выход");
                 Console.Write("Действие: ");
 
                 string choice = Console.ReadLine();
@@ -80,6 +81,11 @@ namespace ConsoleLibrary
                     {
                         ShowAllPublications();
                         break;
+                    }
+                    case "e":
+                    {
+                        Console.WriteLine("Досвидание");
+                        return;
                     }
                     default:
                     {
