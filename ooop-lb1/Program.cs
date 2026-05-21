@@ -22,7 +22,7 @@ namespace ConsoleLibrary
         /// <summary>
         /// Список для хранения всех изданий.
         /// </summary>
-        private static List<IPublication> _publications = new();
+        private static List<PublicationBase> _publications = new();
 
         /// <summary>
         /// Точка входа в программу.
@@ -100,7 +100,6 @@ namespace ConsoleLibrary
         {
             return new Dictionary<string, Action<T>>
             {
-                //TODO: RSDN +
                 ["название"] = 
                     (publication) => 
                         publication.Title = Console.ReadLine(),
@@ -135,7 +134,6 @@ namespace ConsoleLibrary
                 {
                     while (true)
                     {
-                        //TODO: RSDN +
                         Console.Write($"Автор " +
                             $"{book.Authors.Count + NumberOffset}: ");
                         string author = Console.ReadLine();
