@@ -51,7 +51,6 @@ namespace ConsoleLibrary
 
                 string choice = Console.ReadLine();
 
-                //TODO: отступы +
                 switch (choice)
                 {
                     case "b":
@@ -101,6 +100,7 @@ namespace ConsoleLibrary
         {
             return new Dictionary<string, Action<T>>
             {
+                //TODO: RSDN
                 ["название"] = 
                     (publication) => publication.Title = Console.ReadLine(),
                 ["сведения о заглавии"] = 
@@ -130,6 +130,7 @@ namespace ConsoleLibrary
                 {
                     while (true)
                     {
+                        //TODO: RSDN
                         Console.Write($"Автор {book.Authors.Count + NumberOffset}: ");
                         string author = Console.ReadLine();
                         if (string.IsNullOrWhiteSpace(author))
@@ -180,7 +181,6 @@ namespace ConsoleLibrary
         private static Dissertation InputDissertation()
         {
             var actions = GetBaseActions<Dissertation>();
-            //TODO: RSDN +
             actions["полное имя автора, без сокращений"] = 
                 (dissertation) => dissertation.AuthorFull = Console.ReadLine();
             actions["специальность"] = 

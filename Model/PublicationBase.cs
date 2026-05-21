@@ -57,7 +57,6 @@ namespace Model
             }
         }
 
-        //TODO: validation +
         /// <summary>
         /// Свойство сведений о заглавии.
         /// </summary>
