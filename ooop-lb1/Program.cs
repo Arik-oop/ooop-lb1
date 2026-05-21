@@ -100,19 +100,24 @@ namespace ConsoleLibrary
         {
             return new Dictionary<string, Action<T>>
             {
-                //TODO: RSDN
+                //TODO: RSDN +
                 ["название"] = 
-                    (publication) => publication.Title = Console.ReadLine(),
+                    (publication) => 
+                        publication.Title = Console.ReadLine(),
                 ["сведения о заглавии"] = 
-                    (publication) => publication.TitleInformation = Console.ReadLine(),
+                    (publication) => 
+                        publication.TitleInformation = Console.ReadLine(),
                 ["место издания"] = 
                     (publication) => publication.Place = Console.ReadLine(),
                 ["издательство"] = 
-                    (publication) => publication.Publisher = Console.ReadLine(),
+                    (publication) => 
+                        publication.Publisher = Console.ReadLine(),
                 ["год издания"] = 
-                    (publication) => publication.Year = ReadInteger("Год издания"),
+                    (publication) => 
+                        publication.Year = ReadInteger("Год издания"),
                 ["количество страниц"] = 
-                    (publication) => publication.TotalPages = ReadInteger("Количество страниц")
+                    (publication) => 
+                        publication.TotalPages = ReadInteger("Количество страниц")
             };
         }
 
@@ -130,8 +135,9 @@ namespace ConsoleLibrary
                 {
                     while (true)
                     {
-                        //TODO: RSDN
-                        Console.Write($"Автор {book.Authors.Count + NumberOffset}: ");
+                        //TODO: RSDN +
+                        Console.Write($"Автор " +
+                            $"{book.Authors.Count + NumberOffset}: ");
                         string author = Console.ReadLine();
                         if (string.IsNullOrWhiteSpace(author))
                         {
