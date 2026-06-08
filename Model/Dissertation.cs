@@ -85,7 +85,6 @@ namespace Model
         public override string GetGOST()
         {
             var dissertationInformation = new StringBuilder();
-
             dissertationInformation.Append($"{GetAuthorForHeader()}" +
                 $" {Title} : специальность {Speciality} : {Degree}" +
                 $" / {AuthorFull}  ; {Publisher}  – {Place}, {Year}" +
@@ -116,6 +115,7 @@ namespace Model
                 {
                     initials += " ";
                 }
+
                 initials += parts[i][0] + ".";
             }
 

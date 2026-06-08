@@ -44,8 +44,7 @@ namespace Model
         /// Метод для добавления одного или нескольких авторов.
         /// </summary>
         /// <param name="authors">Массив имён авторов для добавления.</param>
-        public void AddAuthors
-            (params string[] authors)
+        public void AddAuthors(params string[] authors)
         {
             if (authors == null || authors.Length == 0)
             {
@@ -68,8 +67,8 @@ namespace Model
         public override string GetGOST()
         {
             var bookInformation = new StringBuilder();
-
             int authorCount = _authors.Count;
+
             if (authorCount >= MinAuthorsForTitle
                 && authorCount <= MaxAuthorsForTitle)
             {
@@ -85,6 +84,7 @@ namespace Model
             if (authorCount > 0)
             {
                 bookInformation.Append(" / ");
+
                 if (authorCount == SingleAuthor)
                 {
                     bookInformation.Append(SwapAuthorFormat(_authors[0]));
@@ -92,15 +92,13 @@ namespace Model
                 else if (authorCount <= MaxAuthorsForFullList)
                 {
                     var formattedAuthors = _authors.Select(SwapAuthorFormat);
-                    bookInformation.Append(string.Join(", ",
-                        formattedAuthors));
+                    bookInformation.Append(string.Join(", ", formattedAuthors));
                 }
                 else
                 {
                     var firstThree = _authors.Take(MaxAuthorsForFullList)
                         .Select(SwapAuthorFormat);
-                    bookInformation.Append($"{string.Join(", ",
-                        firstThree)} [и др.]");
+                    bookInformation.Append($"{string.Join(", ", firstThree)} [и др.]");
                 }
             }
 
@@ -115,12 +113,10 @@ namespace Model
         /// </summary>
         /// <param name="author">Имя автора в исходном формате.</param>
         /// <returns>Строковое представление автора в формате "Имя Фамилия".</returns>
-        private string SwapAuthorFormat
-            (string author)
+        private string SwapAuthorFormat(string author)
         {
             var partsAuthor = author.Split(new[] { ' ', ',' },
                 StringSplitOptions.RemoveEmptyEntries);
-
             return $"{string.Join(" ", partsAuthor.Skip(1))}" +
                 $" {partsAuthor[0]}";
         }

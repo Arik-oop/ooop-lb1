@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Model
+﻿namespace Model
 {
     /// <summary>
-    /// Интерфейс издания.
+    /// Интерфейс для представления издания.
     /// </summary>
     public interface IPublication
     {

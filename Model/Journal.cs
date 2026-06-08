@@ -32,14 +32,10 @@ namespace Model
         public override string GetGOST()
         {
             var journalInformation = new StringBuilder();
-
             journalInformation.Append(Title);
-
             AppendIfNotEmpty(journalInformation, " : ", TitleInformation);
-
             journalInformation.Append($" / {Publisher} – {Place}," +
                 $" {Year}– . – {TotalPages} с.");
-
             AppendIfNotEmpty(journalInformation, " – ", Frequency, ".");
 
             return journalInformation.ToString();

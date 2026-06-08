@@ -1,4 +1,4 @@
 <Solution>
   <Project Path="Model/Model.csproj" />
-  <Project Path="ooop-lb1/ooop-lb1.csproj" />
+  <Project Path="View/View.csproj" Id="f20491d8-a857-418e-911e-2ff4b6f74d6c" />
 </Solution>

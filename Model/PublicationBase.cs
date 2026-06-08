@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Model
@@ -45,12 +44,12 @@ namespace Model
         private const int MinYear = 868;
 
         /// <summary>
-        /// Минимальный допустимый год издания.
+        /// Минимальное допустимое количество страниц.
         /// </summary>
         private const int MinTotalPages = 7;
 
         /// <summary>
-        /// Минимальный допустимый год издания.
+        /// Максимальное допустимое количество страниц.
         /// </summary>
         private const int MaxTotalPages = 100100;
 
@@ -79,6 +78,7 @@ namespace Model
                 _titleInformation = value;
             }
         }
+
         /// <summary>
         /// Свойство года издания.
         /// </summary>
@@ -142,8 +142,7 @@ namespace Model
         /// </summary>
         /// <param name="value">Проверяемое значение.</param>
         /// <param name="parameterName">Имя параметра для сообщения об ошибке.</param>
-        protected void ValidateString
-            (string value, string parameterName)
+        protected void ValidateString(string value, string parameterName)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
@@ -158,8 +157,7 @@ namespace Model
         /// </summary>
         /// <param name="value">Проверяемое значение.</param>
         /// <param name="parameterName">Имя параметра для сообщения об ошибке.</param>
-        protected void ValidateYear
-            (int value, string parameterName)
+        protected void ValidateYear(int value, string parameterName)
         {
             if (value < MinYear || value > DateTime.Now.Year)
             {
@@ -175,8 +173,7 @@ namespace Model
         /// </summary>
         /// <param name="value">Проверяемое значение.</param>
         /// <param name="parameterName">Имя параметра для сообщения об ошибке.</param>
-        protected void ValidatePositiveNumber
-            (int value, string parameterName)
+        protected void ValidatePositiveNumber(int value, string parameterName)
         {
             if (value <= 0 || value < MinTotalPages || value > MaxTotalPages)
             {
@@ -194,8 +191,11 @@ namespace Model
         /// <param name="prefix">Префикс для добавляемого значения.</param>
         /// <param name="value">Проверяемое и добавляемое значение.</param>
         /// <param name="suffix">Суффикс для добавляемого значения.</param>
-        protected static void AppendIfNotEmpty
-            (StringBuilder stringBuilder, string prefix, string value, string suffix = "")
+        protected static void AppendIfNotEmpty(
+            StringBuilder stringBuilder,
+            string prefix,
+            string value,
+            string suffix = "")
         {
             if (!string.IsNullOrWhiteSpace(value))
             {

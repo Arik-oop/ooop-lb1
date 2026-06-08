@@ -52,11 +52,8 @@ namespace Model
         public override string GetGOST()
         {
             var collectionInformation = new StringBuilder();
-
             collectionInformation.Append($"{Title}");
-
             AppendIfNotEmpty(collectionInformation, " : ", TitleInformation);
-
             collectionInformation.Append($" / редкол : {EditorialBoard}," +
                 $" отв. ред. {ResponsibleEditors} - {Place} " +
                 $": Изд-во {Publisher}, {Year}. - {TotalPages} с.");
