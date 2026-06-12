@@ -69,8 +69,9 @@ namespace View
             if (dataGridViewPublications.SelectedRows.Count > 0)
             {
                 var indicesToDelete = new List<int>();
-                //TODO: RSDN
-                foreach (DataGridViewRow row in dataGridViewPublications.SelectedRows)
+                //TODO: RSDN +
+                foreach (DataGridViewRow row in 
+                    dataGridViewPublications.SelectedRows)
                 {
                     indicesToDelete.Add(row.Index);
                 }
