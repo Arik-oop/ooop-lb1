@@ -848,6 +848,8 @@
             Controls.Add(groupBoxCollection);
             Controls.Add(groupBoxJournal);
             Controls.Add(groupBoxType);
+            FormBorderStyle = FormBorderStyle.FixedDialog; 
+            MaximizeBox = false;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddPublicationForm";
             Text = "Добавить издание";

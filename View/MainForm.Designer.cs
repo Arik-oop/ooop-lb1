@@ -60,7 +60,7 @@
             // 
             // buttonAddPublication
             // 
-            buttonAddPublication.Location = new Point(260, 314);
+            buttonAddPublication.Location = new Point(12, 314);
             buttonAddPublication.Name = "buttonAddPublication";
             buttonAddPublication.Size = new Size(195, 31);
             buttonAddPublication.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             // buttonRemovePublication
             // 
-            buttonRemovePublication.Location = new Point(506, 314);
+            buttonRemovePublication.Location = new Point(232, 314);
             buttonRemovePublication.Name = "buttonRemovePublication";
             buttonRemovePublication.Size = new Size(195, 31);
             buttonRemovePublication.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             // buttonSearch
             // 
-            buttonSearch.Location = new Point(12, 314);
+            buttonSearch.Location = new Point(513, 314);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(195, 31);
             buttonSearch.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(1004, 314);
+            buttonSave.Location = new Point(788, 314);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(195, 31);
             buttonSave.TabIndex = 4;
@@ -100,7 +100,7 @@
             // 
             // buttonLoad
             // 
-            buttonLoad.Location = new Point(755, 314);
+            buttonLoad.Location = new Point(1010, 314);
             buttonLoad.Name = "buttonLoad";
             buttonLoad.Size = new Size(195, 31);
             buttonLoad.TabIndex = 5;
@@ -119,6 +119,8 @@
             Controls.Add(buttonRemovePublication);
             Controls.Add(buttonAddPublication);
             Controls.Add(groupBoxPublications);
+            FormBorderStyle = FormBorderStyle.FixedDialog; 
+            MaximizeBox = false;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "Электронная библиотека";

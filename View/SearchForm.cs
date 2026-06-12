@@ -26,6 +26,7 @@ namespace View
             _allPublications = publications;
             SetupSearchFields();
             DataGridViewHelper.SetupPublicationColumns(dataGridViewResults);
+            dataGridViewResults.AllowUserToAddRows = false;
         }
 
         /// <summary>
@@ -43,9 +44,17 @@ namespace View
         {
             comboBoxField.Items.Clear();
             comboBoxField.Items.Add("Название");
+            comboBoxField.Items.Add("Сведения о заглавии");
             comboBoxField.Items.Add("Место издания");
             comboBoxField.Items.Add("Издательство");
             comboBoxField.Items.Add("Год");
+            comboBoxField.Items.Add("Страницы");
+            comboBoxField.Items.Add("Описание по ГОСТ");
+            comboBoxField.Items.Add("Авторы (книги)");
+            comboBoxField.Items.Add("Частота (журналы)");
+            comboBoxField.Items.Add("Редколлегия (сборники)");
+            comboBoxField.Items.Add("Автор диссертации");
+            comboBoxField.Items.Add("Специальность (диссертации)");
             comboBoxField.SelectedIndex = 0;
         }
 
@@ -72,42 +81,127 @@ namespace View
 
             switch (comboBoxField.SelectedIndex)
             {
-                //TODО: отступы
+                //TODО: отступы +
                 case 0:
-                    {
-                        found = _allPublications.Where(p =>
-                            p.Title.ToLower().Contains(searchText)).ToList();
-                        break;
-                    }
+                {
+                    found = _allPublications
+                        .Where(p => p.Title.ToLower().Contains(searchText))
+                        .ToList();
+                    break;
+                }
                 case 1:
-                    {
-                        found = _allPublications.Where(p =>
-                            p.Place.ToLower().Contains(searchText)).ToList();
-                        break;
-                    }
+                {
+                    found = _allPublications
+                        .Where(p => p.TitleInformation != null &&
+                               p.TitleInformation.ToLower().Contains(searchText))
+                        .ToList();
+                    break;
+                }
                 case 2:
-                    {
-                        found = _allPublications.Where(p =>
-                            p.Publisher.ToLower().Contains(searchText)).ToList();
-                        break;
-                    }
+                {
+                    found = _allPublications
+                        .Where(p => p.Place.ToLower().Contains(searchText))
+                        .ToList();
+                    break;
+                }
                 case 3:
+                {
+                    found = _allPublications
+                        .Where(p => p.Publisher.ToLower().Contains(searchText))
+                        .ToList();
+                    break;
+                }
+                case 4:
+                {
+                    if (int.TryParse(searchText, out int year))
                     {
-                        if (int.TryParse(searchText, out int year))
-                        {
-                            found = _allPublications.Where(p => p.Year == year).ToList();
-                        }
-                        else
-                        {
-                            MessageBox.Show(
-                                "Введите корректный год!",
-                                "Ошибка",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                            return;
-                        }
-                        break;
+                        found = _allPublications
+                            .Where(p => p.Year == year)
+                            .ToList();
                     }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Введите корректный год!",
+                            "Ошибка",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                    break;
+                }
+                case 5:
+                {
+                    if (int.TryParse(searchText, out int pages))
+                    {
+                        found = _allPublications
+                            .Where(p => p.TotalPages == pages)
+                            .ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Введите корректное количество страниц!",
+                            "Ошибка",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                    break;
+                }
+                case 6:
+                {
+                    found = _allPublications
+                        .Where(p => p.GetGOST().ToLower().Contains(searchText))
+                        .ToList();
+                    break;
+                }
+                case 7:
+                {
+                    found = _allPublications
+                        .OfType<Book>()
+                        .Where(b => b.Authors.Any(a =>
+                            a.ToLower().Contains(searchText)))
+                        .Cast<PublicationBase>()
+                        .ToList();
+                    break;
+                }
+                case 8:
+                {
+                    found = _allPublications
+                        .OfType<Journal>()
+                        .Where(j => j.Frequency.ToLower().Contains(searchText))
+                        .Cast<PublicationBase>()
+                        .ToList();
+                    break;
+                }
+                case 9:
+                {
+                    found = _allPublications
+                        .OfType<Collection>()
+                        .Where(c => c.EditorialBoard.ToLower().Contains(searchText))
+                        .Cast<PublicationBase>()
+                        .ToList();
+                    break;
+                }
+                case 10:
+                {
+                    found = _allPublications
+                        .OfType<Dissertation>()
+                        .Where(d => d.AuthorFull.ToLower().Contains(searchText))
+                        .Cast<PublicationBase>()
+                        .ToList();
+                    break;
+                }
+                case 11:
+                {
+                    found = _allPublications
+                        .OfType<Dissertation>()
+                        .Where(d => d.Speciality.ToLower().Contains(searchText))
+                        .Cast<PublicationBase>()
+                        .ToList();
+                    break;
+                }
             }
 
             foreach (var pub in found)

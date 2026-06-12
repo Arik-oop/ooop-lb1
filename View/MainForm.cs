@@ -31,6 +31,7 @@ namespace View
             _publications = new List<PublicationBase>();
             dataGridViewPublications.AutoGenerateColumns = false;
             dataGridViewPublications.ReadOnly = true;
+            dataGridViewPublications.AllowUserToAddRows = false;
             dataGridViewPublications.SelectionMode =
                 DataGridViewSelectionMode.FullRowSelect;
             DataGridViewHelper.SetupPublicationColumns(dataGridViewPublications);
@@ -127,8 +128,9 @@ namespace View
 
             using (SaveFileDialog saveDialog = new SaveFileDialog())
             {
-                //TODO: RSDN
-                saveDialog.Filter = "Файлы библиотеки (*.library)|*.library|Все файлы (*.*)|*.*";
+                //TODO: RSDN +
+                saveDialog.Filter = "Файлы библиотеки " +
+                    "(*.library)|*.library|Все файлы (*.*)|*.*";
                 saveDialog.Title = "Сохранить библиотеку";
                 saveDialog.FileName = "library.library";
 
@@ -139,8 +141,9 @@ namespace View
                         _currentFilePath = saveDialog.FileName;
                         SerializePublications(_currentFilePath);
                         MessageBox.Show(
-                            //TODO: RSDN
-                            $"Данные успешно сохранены в файл: {_currentFilePath}",
+                            //TODO: RSDN +
+                            $"Данные успешно сохранены в файл: " +
+                            $"{_currentFilePath}",
                             "Успех",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
@@ -166,21 +169,23 @@ namespace View
         {
             using (OpenFileDialog openDialog = new OpenFileDialog())
             {
-                //TODO: RSDN
-                openDialog.Filter = "Файлы библиотеки (*.library)|*.library|Все файлы (*.*)|*.*";
+                //TODO: RSDN +
+                openDialog.Filter = "Файлы библиотеки " +
+                    "(*.library)|*.library|Все файлы (*.*)|*.*";
                 openDialog.Title = "Загрузить библиотеку";
 
                 if (openDialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        //TODO: RSDN
+                        //TODO: RSDN +
                         var loaded = DeserializePublications(openDialog.FileName);
                         _currentFilePath = openDialog.FileName;
                         _publications = loaded;
                         RefreshDataGridView();
                         MessageBox.Show(
-                            $"Загружено изданий: {_publications.Count}",
+                            $"Загружено изданий: " +
+                            $"{_publications.Count}",
                             "Успех",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);

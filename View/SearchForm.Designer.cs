@@ -139,6 +139,8 @@
             ClientSize = new Size(1077, 450);
             Controls.Add(groupBoxSearch);
             ForeColor = SystemColors.ControlText;
+            FormBorderStyle = FormBorderStyle.FixedDialog; 
+            MaximizeBox = false;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "SearchForm";
             RightToLeft = RightToLeft.No;
