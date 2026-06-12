@@ -81,7 +81,6 @@ namespace View
 
             switch (comboBoxField.SelectedIndex)
             {
-                //TODО: отступы +
                 case 0:
                 {
                     found = _allPublications

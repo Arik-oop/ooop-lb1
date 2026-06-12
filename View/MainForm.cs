@@ -69,6 +69,7 @@ namespace View
             if (dataGridViewPublications.SelectedRows.Count > 0)
             {
                 var indicesToDelete = new List<int>();
+                //TODO: RSDN
                 foreach (DataGridViewRow row in dataGridViewPublications.SelectedRows)
                 {
                     indicesToDelete.Add(row.Index);
@@ -128,7 +129,6 @@ namespace View
 
             using (SaveFileDialog saveDialog = new SaveFileDialog())
             {
-                //TODO: RSDN +
                 saveDialog.Filter = "Файлы библиотеки " +
                     "(*.library)|*.library|Все файлы (*.*)|*.*";
                 saveDialog.Title = "Сохранить библиотеку";
@@ -141,7 +141,6 @@ namespace View
                         _currentFilePath = saveDialog.FileName;
                         SerializePublications(_currentFilePath);
                         MessageBox.Show(
-                            //TODO: RSDN +
                             $"Данные успешно сохранены в файл: " +
                             $"{_currentFilePath}",
                             "Успех",
@@ -169,7 +168,6 @@ namespace View
         {
             using (OpenFileDialog openDialog = new OpenFileDialog())
             {
-                //TODO: RSDN +
                 openDialog.Filter = "Файлы библиотеки " +
                     "(*.library)|*.library|Все файлы (*.*)|*.*";
                 openDialog.Title = "Загрузить библиотеку";
@@ -178,7 +176,6 @@ namespace View
                 {
                     try
                     {
-                        //TODO: RSDN +
                         var loaded = DeserializePublications(openDialog.FileName);
                         _currentFilePath = openDialog.FileName;
                         _publications = loaded;
