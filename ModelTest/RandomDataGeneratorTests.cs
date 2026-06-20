@@ -9,9 +9,6 @@ namespace ModelTest
     [TestFixture]
     public class RandomDataGeneratorTests
     {
-        /// <summary>
-        /// Проверка генерации случайной книги
-        /// </summary>
         [TestCase(TestName = "Проверка генерации случайной книги")]
         public void GenerateRandomBookTest()
         {
@@ -27,9 +24,6 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка генерации нескольких случайных книг
-        /// </summary>
         [TestCase(TestName = "Проверка генерации нескольких случайных книг")]
         public void GenerateMultipleRandomBooksTest()
         {
@@ -43,9 +37,6 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка генерации случайного журнала
-        /// </summary>
         [TestCase(TestName = "Проверка генерации случайного журнала")]
         public void GenerateRandomJournalTest()
         {
@@ -61,9 +52,6 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка генерации случайного сборника
-        /// </summary>
         [TestCase(TestName = "Проверка генерации случайного сборника")]
         public void GenerateRandomCollectionTest()
         {
@@ -79,9 +67,6 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка генерации случайной диссертации
-        /// </summary>
         [TestCase(TestName = "Проверка генерации случайной диссертации")]
         public void GenerateRandomDissertationTest()
         {
@@ -97,9 +82,6 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка, что генерация дает результаты
-        /// </summary>
         [TestCase(TestName = "Проверка, что генерация дает результаты")]
         public void GenerateRandomDifferentResultsTest()
         {
@@ -117,10 +99,8 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка корректности данных сгенерированной книги
-        /// </summary>
-        [TestCase(TestName = "Проверка корректности данных сгенерированной книги")]
+        [TestCase(TestName = "Проверка корректности данных " +
+            "сгенерированной книги")]
         public void GeneratedBookDataValidityTest()
         {
             var book = RandomDataGenerator.GenerateRandomBook();
@@ -136,10 +116,8 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка корректности данных сгенерированного журнала
-        /// </summary>
-        [TestCase(TestName = "Проверка корректности данных сгенерированного журнала")]
+        [TestCase(TestName = "Проверка корректности данных " +
+            "сгенерированного журнала")]
         public void GeneratedJournalDataValidityTest()
         {
             var journal = RandomDataGenerator.GenerateRandomJournal();
@@ -155,10 +133,8 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка корректности данных сгенерированного сборника
-        /// </summary>
-        [TestCase(TestName = "Проверка корректности данных сгенерированного сборника")]
+        [TestCase(TestName = "Проверка корректности данных " +
+            "сгенерированного сборника")]
         public void GeneratedCollectionDataValidityTest()
         {
             var collection = RandomDataGenerator.GenerateRandomCollection();
@@ -174,10 +150,8 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка корректности данных сгенерированной диссертации
-        /// </summary>
-        [TestCase(TestName = "Проверка корректности данных сгенерированной диссертации")]
+        [TestCase(TestName = "Проверка корректности данных " +
+            "сгенерированной диссертации")]
         public void GeneratedDissertationDataValidityTest()
         {
             var dissertation = RandomDataGenerator.GenerateRandomDissertation();

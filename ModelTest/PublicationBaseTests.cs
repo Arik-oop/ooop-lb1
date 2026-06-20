@@ -10,33 +10,28 @@ namespace ModelTest
     [TestFixture]
     public class PublicationBaseTests
     {
-        /// <summary>
-        /// Проверка метода ValidateString() корректными данными
-        /// </summary>
         [TestCase(TestName = "Проверка метода ValidateString() корректными данными")]
         public void ValidateStringAssertionTest()
         {
             var testPublication = new TestPublication();
-            Assert.DoesNotThrow(() => testPublication.TestValidateString("Корректная строка", "TestField"));
-            Assert.DoesNotThrow(() => testPublication.TestValidateString("A", "TestField"));
-            Assert.DoesNotThrow(() => testPublication.TestValidateString("Очень длинная строка с пробелами и символами!!!", "TestField"));
+            Assert.DoesNotThrow(() => testPublication.TestValidateString
+            ("Корректная строка", "TestField"));
+            Assert.DoesNotThrow(() => testPublication.TestValidateString
+            ("A", "TestField"));
+            Assert.DoesNotThrow(() => testPublication.TestValidateString
+            ("Очень длинная строка с пробелами и символами!!!", "TestField"));
         }
 
-        /// <summary>
-        /// Проверка метода ValidateString() некорректными данными
-        /// </summary>
         [TestCase("", TestName = "Пустая строка")]
         [TestCase("   ", TestName = "Строка из пробелов")]
         [TestCase(null, TestName = "Проверка null в методе ValidateString")]
         public void ValidateStringAssertionNegativeTest(string? invalidValue)
         {
             var testPublication = new TestPublication();
-            Assert.Throws<ArgumentException>(() => testPublication.TestValidateString(invalidValue, "TestField"));
+            Assert.Throws<ArgumentException>(() => testPublication.TestValidateString
+            (invalidValue, "TestField"));
         }
 
-        /// <summary>
-        /// Проверка метода ValidateYear() корректными данными
-        /// </summary>
         [TestCase(868, TestName = "Минимальный год")]
         [TestCase(1500, TestName = "Средний год")]
         [TestCase(2026, TestName = "Текущий год")]
@@ -46,33 +41,26 @@ namespace ModelTest
             Assert.DoesNotThrow(() => testPublication.TestValidateYear(year));
         }
 
-        /// <summary>
-        /// Проверка метода ValidateYear() некорректными данными
-        /// </summary>
         [TestCase(867, TestName = "Год меньше минимального")]
         [TestCase(2027, TestName = "Год больше текущего")]
         [TestCase(100, TestName = "Слишком маленький год")]
         public void ValidateYearAssertionNegativeTest(int year)
         {
             var testPublication = new TestPublication();
-            Assert.Throws<ArgumentException>(() => testPublication.TestValidateYear(year));
+            Assert.Throws<ArgumentException>(() 
+                => testPublication.TestValidateYear(year));
         }
 
-        /// <summary>
-        /// Проверка метода ValidatePositiveNumber() корректными данными
-        /// </summary>
         [TestCase(7, TestName = "Минимальное количество страниц")]
         [TestCase(100, TestName = "Среднее количество страниц")]
         [TestCase(10000, TestName = "Большое количество страниц")]
         public void ValidatePositiveNumberAssertionTest(int pages)
         {
             var testPublication = new TestPublication();
-            Assert.DoesNotThrow(() => testPublication.TestValidatePositiveNumber(pages));
+            Assert.DoesNotThrow(() 
+                => testPublication.TestValidatePositiveNumber(pages));
         }
 
-        /// <summary>
-        /// Проверка метода ValidatePositiveNumber() некорректными данными
-        /// </summary>
         [TestCase(0, TestName = "Ноль страниц")]
         [TestCase(-1, TestName = "Отрицательное количество страниц")]
         [TestCase(-100, TestName = "Большое отрицательное число")]
@@ -80,17 +68,17 @@ namespace ModelTest
         public void ValidatePositiveNumberAssertionNegativeTest(int pages)
         {
             var testPublication = new TestPublication();
-            Assert.Throws<ArgumentException>(() => testPublication.TestValidatePositiveNumber(pages));
+            Assert.Throws<ArgumentException>(() 
+                => testPublication.TestValidatePositiveNumber(pages));
         }
 
-        /// <summary>
-        /// Проверка метода AppendIfNotEmpty() корректными данными
-        /// </summary>
-        [TestCase(TestName = "Проверка метода AppendIfNotEmpty() корректными данными")]
+        [TestCase(TestName = 
+            "Проверка метода AppendIfNotEmpty() корректными данными")]
         public void AppendIfNotEmptyAssertionTest()
         {
             var testPublication = new TestPublication();
-            var testData = new (string Prefix, string Value, string Suffix, string Expected)[]
+            var testData = new (string Prefix, string Value, 
+                string Suffix, string Expected)[]
             {
                 ("prefix ", "value", " suffix", "prefix value suffix"),
                 ("", "value", "", "value"),
@@ -100,32 +88,32 @@ namespace ModelTest
             foreach (var (prefix, value, suffix, expected) in testData)
             {
                 var stringBuilder = new StringBuilder();
-                testPublication.TestAppendIfNotEmpty(stringBuilder, prefix, value, suffix);
+                testPublication.TestAppendIfNotEmpty
+                    (stringBuilder, prefix, value, suffix);
                 Assert.That(stringBuilder.ToString(), Is.EqualTo(expected));
             }
         }
 
-        /// <summary>
-        /// Проверка метода AppendIfNotEmpty() некорректными значениями
-        /// </summary>
-        [TestCase(TestName = "Проверка метода AppendIfNotEmpty() некорректными значениями")]
+        [TestCase(TestName = "Проверка метода AppendIfNotEmpty() " +
+            "некорректными значениями")]
         public void AppendIfNotEmptyNegativeTest()
         {
             var testPublication = new TestPublication();
             var stringBuilder = new StringBuilder();
             stringBuilder.Append("start");
 
-            testPublication.TestAppendIfNotEmpty(stringBuilder, "prefix ", "", " suffix");
-            testPublication.TestAppendIfNotEmpty(stringBuilder, "prefix ", "   ", " suffix");
-            testPublication.TestAppendIfNotEmpty(stringBuilder, "prefix ", null, " suffix");
+            testPublication.TestAppendIfNotEmpty(stringBuilder, 
+                "prefix ", "", " suffix");
+            testPublication.TestAppendIfNotEmpty(stringBuilder, 
+                "prefix ", "   ", " suffix");
+            testPublication.TestAppendIfNotEmpty(stringBuilder, 
+                "prefix ", null, " suffix");
 
             Assert.That(stringBuilder.ToString(), Is.EqualTo("start"));
         }
 
-        /// <summary>
-        /// Проверка класса PublicationBase со всеми свойствами
-        /// </summary>
-        [TestCase(TestName = "Проверка класса PublicationBase со всеми свойствами")]
+        [TestCase(TestName = "Проверка класса PublicationBase " +
+            "со всеми свойствами")]
         public void AllPropertiesAssertionTest()
         {
             var publication = new Book();
@@ -139,7 +127,8 @@ namespace ModelTest
             Assert.Multiple(() =>
             {
                 Assert.That(publication.Title, Is.EqualTo("Тестовое название"));
-                Assert.That(publication.TitleInformation, Is.EqualTo("Тестовое подзаголовок"));
+                Assert.That(publication.TitleInformation, 
+                    Is.EqualTo("Тестовое подзаголовок"));
                 Assert.That(publication.Year, Is.EqualTo(2023));
                 Assert.That(publication.Place, Is.EqualTo("Санкт-Петербург"));
                 Assert.That(publication.Publisher, Is.EqualTo("ТестИздат"));
@@ -196,7 +185,8 @@ namespace ModelTest
             /// <param name="prefix">Префикс</param>
             /// <param name="value">Значение</param>
             /// <param name="suffix">Суффикс</param>
-            public void TestAppendIfNotEmpty(StringBuilder stringBuilder, string prefix, string value, string suffix = "")
+            public void TestAppendIfNotEmpty(StringBuilder stringBuilder, 
+                string prefix, string value, string suffix = "")
             {
                 AppendIfNotEmpty(stringBuilder, prefix, value, suffix);
             }

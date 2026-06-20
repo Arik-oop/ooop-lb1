@@ -9,9 +9,6 @@ namespace ModelTest
     [TestFixture]
     public class CollectionTests : PublicationBaseChildTests<Collection>
     {
-        /// <summary>
-        /// Проверка корректных данных для свойства EditorialBoard
-        /// </summary>
         [TestCase("Иванов И.И., Петров П.П.",
             TestName = "Установка редакционной коллегии из двух человек")]
         [TestCase("Сидоров С.С.",
@@ -26,9 +23,6 @@ namespace ModelTest
                 Is.EqualTo(editorialBoard));
         }
 
-        /// <summary>
-        /// Проверка некорректных данных для свойства EditorialBoard
-        /// </summary>
         [TestCase("", TestName = "Пустая строка")]
         [TestCase("   ", TestName = "Строка из пробелов")]
         [TestCase(null, TestName = "Null значение")]
@@ -39,9 +33,6 @@ namespace ModelTest
                 () => collection.EditorialBoard = invalidBoard);
         }
 
-        /// <summary>
-        /// Проверка корректных данных для свойства ResponsibleEditors
-        /// </summary>
         [TestCase("Иванов И.И.",
             TestName = "Установка одного ответственного редактора")]
         [TestCase("Петров П.П., Сидоров С.С.",
@@ -54,9 +45,6 @@ namespace ModelTest
                 Is.EqualTo(responsibleEditors));
         }
 
-        /// <summary>
-        /// Проверка некорректных данных для свойства ResponsibleEditors
-        /// </summary>
         [TestCase("", TestName = "Пустая строка")]
         [TestCase("   ", TestName = "Строка из пробелов")]
         [TestCase(null, TestName = "Null значение")]
@@ -67,9 +55,6 @@ namespace ModelTest
                 () => collection.ResponsibleEditors = invalidEditors);
         }
 
-        /// <summary>
-        /// Проверка метода GetGOSTInformation() с полными данными
-        /// </summary>
         [TestCase(TestName = "Проверка метода GetGOSTInformation()" +
                             " с полными данными")]
         public void GetGOSTInformationFullDataTest()
@@ -115,9 +100,6 @@ namespace ModelTest
             });
         }
 
-        /// <summary>
-        /// Проверка метода GetGOSTInformation() с минимальными данными
-        /// </summary>
         [TestCase(TestName = "Проверка метода GetGOSTInformation()" +
                             " с минимальными данными")]
         public void GetGOSTInformationMinimalDataTest()
