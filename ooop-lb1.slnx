@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="Model/Model.csproj" />
-  <Project Path="ModelTest/ModelTest.csproj" Id="0408cbd9-0dd2-4b03-bca6-40aaead32fc4" />
+  <Project Path="ModelTest/ModelTest.csproj" Id="0408cbd9-0dd2-4b03-bca6-40aaead32fc4">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
   <Project Path="View/View.csproj" Id="f20491d8-a857-418e-911e-2ff4b6f74d6c" />
 </Solution>
