@@ -6,7 +6,7 @@ namespace Model
     /// <summary>
     /// Базовый класс издания.
     /// </summary>
-    public abstract class PublicationBase : IPublication
+    public abstract class PublicationBase
     {
         /// <summary>
         /// Заглавие.
